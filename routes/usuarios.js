@@ -13,7 +13,7 @@ rutaUsuario.get('/obtenerUsuarios/:nombre([A-Za-z]+)', async (req, res, next) =>
                 message: "Se produjo un error"
             });
         });
-        if (consulta.length > 0) {
+        if (consulta.length >= 0) {
             res.status(200).json({
                 code: 200,
                 message: consulta
@@ -41,7 +41,7 @@ rutaUsuario.post('/altaUsuario', async (req, res, next) => {
         direccion,
         contrasena
     } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
     if (nombre && apellidos && telefono && correo && direccion && contrasena) {
         let query = "INSERT INTO usuarios VALUES (null,?,?,?,?,?,?,default)";
         const rows = await db.query(query, [nombre, apellidos, telefono, correo, direccion, contrasena]).catch((error) => {
@@ -50,7 +50,7 @@ rutaUsuario.post('/altaUsuario', async (req, res, next) => {
                 message: "Se produjo un error"
             });
         });
-        console.log(rows);
+        //console.log(rows);
         if (rows.affectedRows == 1) {
             res.status(200).json({
                 code: 200,
