@@ -10,6 +10,7 @@ rutaAcceso.post('/', async (req,res,next)=>{
     const {correo,contrasena} = req.body;
     let query = "SELECT id_us,tipousr FROM usuarios WHERE correo = ? AND contrasena = ? AND tipousr = ?;";
     const resultado = await db.query(query,[correo,contrasena,'A']).catch((error)=>{
+        console.log(error);
         res.status(500).json({code:500,message:"Ocurrio un errror"});
     });
     console.log(resultado);

@@ -41,6 +41,7 @@ rutaUsuario.post('/altaUsuario', async (req, res, next) => {
         direccion,
         contrasena
     } = req.body;
+    console.log(req.body);
     if (nombre && apellidos && telefono && correo && direccion && contrasena) {
         let query = "INSERT INTO usuarios VALUES (null,?,?,?,?,?,?,default)";
         const rows = await db.query(query, [nombre, apellidos, telefono, correo, direccion, contrasena]).catch((error) => {
