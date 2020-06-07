@@ -13,20 +13,20 @@ rutaUsuario.get('/obtenerUsuarios/:nombre([A-Za-z]+)', async (req, res, next) =>
                 message: "Se produjo un error"
             });
         });
-        if (consulta.length >= 0) {
+        if (consulta.length > 0) {
             res.status(200).json({
                 code: 200,
                 message: consulta
             });
         } else {
-            res.status(404).json({
-                code: 404,
+            res.status(201).json({
+                code: 201,
                 message: "No se encontraron resultados"
             });
         }
     } else {
-        res.status(404).json({
-            code: 404,
+        res.status(202).json({
+            code: 202,
             message: "Por favor, ingrese un nombre para buscar"
         });
     }
@@ -57,14 +57,14 @@ rutaUsuario.post('/altaUsuario', async (req, res, next) => {
                 message: "Usuario dado de alta correctamente"
             });
         } else {
-            res.status(404).json({
-                code: 404,
+            res.status(201).json({
+                code: 201,
                 message: "No se encontraron resultados"
             });
         }
     } else {
-        res.status(404).json({
-            code: 404,
+        res.status(202).json({
+            code: 202,
             message: "Uno o mas campos vacios"
         });
     }
@@ -93,14 +93,14 @@ rutaUsuario.patch('/modificarUsuario/:id([0-9]{1,3})', async (req, res, next) =>
                 message: "Informacion actualizada correctamente"
             });
         } else {
-            res.status(404).json({
-                code: 404,
+            res.status(201).json({
+                code: 201,
                 message: "No se encontraron resultados"
             });
         }
     } else {
-        res.status(404).json({
-            code: 404,
+        res.status(202).json({
+            code: 202,
             message: "Uno o mas campos vacios"
         });
     }
@@ -122,14 +122,14 @@ rutaUsuario.delete('/eliminarUsuario/:id([0-9]{1,3})', async (req, res, next) =>
                 message: "Usuario eliminado correctamente"
             });
         } else {
-            res.status(404).json({
-                code: 404,
+            res.status(201).json({
+                code: 201,
                 message: "No se encontraron resultados"
             });
         }
     } else {
-        res.status(404).json({
-            code: 404,
+        res.status(202).json({
+            code: 202,
             message: "Uno o mas campos vacios"
         });
     }

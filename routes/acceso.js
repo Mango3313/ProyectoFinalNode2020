@@ -21,7 +21,7 @@ rutaAcceso.post('/', async (req,res,next)=>{
         },process.env.SECRET);
         res.status(200).json({code:200,message:token});
     }else{
-        res.status(404).json({code:404,message:"Parece que ese usuario no existe, revisa las credenciales e intentalo de nuevo"});
+        res.status(201).json({code:201,message:"Parece que ese usuario no existe, revisa las credenciales e intentalo de nuevo"});
     }
 });
 
